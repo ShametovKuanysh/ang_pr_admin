@@ -1,0 +1,35 @@
+<div *ngIf="loading;else loaded">Loading Data...</div>
+<ng-template #loaded>
+<nav class="pt-2">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" [ngClass]="{'disabled':page === 1}" (click)="moveToPage(page - 1)">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let n of totalPages | numarray; let index = index">
+            <a class="page-link" [ngClass]="{'active': page === index + 1}" (click)="moveToPage(index + 1)">{{index + 1}}</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" [ngClass]="{'disabled':page === totalPages}" (click)="moveToPage(page + 1)">Next</a>
+        </li>
+    </ul>
+</nav>
+<div class="p-2">
+    <button class="btn btn-primary" type="button" (click)="addData()">Add New</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th *ngFor="let field of fields">{{ field.title }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngIf="data">
+        <tr *ngFor="let d of data.slice((page - 1) * perPage, page * perPage)">
+            <td><a [routerLink]="['/', title, d.id]" class="btn btn-primary">View</a></td>
+            <td *ngFor="let field of fields">{{ d[field.code] }}</td>
+            <td><button class="btn btn-danger" type="button" (click)="deleteData(d.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+</ng-template>

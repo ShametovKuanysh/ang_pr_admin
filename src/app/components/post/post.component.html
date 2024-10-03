@@ -1,0 +1,18 @@
+<div class="card p-3">
+    <form class="form" [formGroup]="postForm" (ngSubmit)="updatePost()">
+        <h3>Edit Post</h3>
+        <div class="form-group">
+            <label for="title">Name</label>
+            <input type="text" class="form-control" id="title" formControlName="title" required>
+            
+        </div>
+        <div class="form-group">
+            <label for="body">Body</label>
+            <input type="text" class="form-control" id="body" formControlName="body" required>
+        </div>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-primary" [disabled]="!postForm.valid">Submit</button>
+            <button type="button" class="btn btn-danger m-2" (click)="bind()">Cancel</button>
+        </div>
+    </form>
+</div>

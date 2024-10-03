@@ -1,0 +1,76 @@
+<div class="card p-3">
+    <form class="form" [formGroup]="usersForm" (ngSubmit)="updateUser()">
+        <h3>{{id == 0 ? 'Add' : 'Edit'}} User</h3>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" formControlName="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input type="text" class="form-control" id="website" formControlName="website" required>
+        </div>
+        <div formGroupName="address" class="card p-3 mt-2">
+            <h5>Address</h5>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" id="street" formControlName="street" required>
+            </div>
+            <div class="form-group">
+                <label for="suite">Suite</label>
+                <input type="text" class="form-control" id="suite" formControlName="suite" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" formControlName="city" required>
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Zipcode</label>
+                <input type="text" class="form-control" id="zipcode" formControlName="zipcode" required>
+            </div>
+
+            <div formGroupName="geo" class="card p-3 mt-2">
+                <h5>Geo</h5>
+                <div class="form-group">
+                    <label for="lat">Lat</label>
+                    <input type="text" class="form-control" id="lat" formControlName="lat" required>
+                </div>
+                <div class="form-group">
+                    <label for="lng">Lng</label>
+                    <input type="text" class="form-control" id="lng" formControlName="lng" required>
+                </div>
+            </div>
+        </div>
+        <div formGroupName="company" class="card p-3 mt-2">
+            <h5>Company</h5>
+            <div class="form-group">
+                <label for="c_name">Name</label>
+                <input type="text" class="form-control" id="c_name" formControlName="name" required>
+            </div>
+            <div class="form-group">
+                <label for="catchPhrase">Catch Phrase</label>
+                <input type="text" class="form-control" id="catchPhrase" formControlName="catchPhrase" required>
+            </div>
+            <div class="form-group">
+                <label for="bs">Bs</label>
+                <input type="text" class="form-control" id="bs" formControlName="bs" required>
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" class="btn btn-primary" [disabled]="!usersForm.valid">Submit</button>
+            <button type="button" class="btn btn-danger m-2" (click)="bind()">Cancel</button>
+        </div>
+    </form>
+</div>
